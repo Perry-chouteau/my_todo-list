@@ -1,5 +1,98 @@
 @import url('https://fonts.googleapis.com/css2?family=Kavoon&display=swap');
 
-.title {
-    color:black;
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    /*-webkit-user-select: none;*/
+    /*-webkit-touch-callout: none;*/
+    /*-moz-user-select: none;*/
+    /*-ms-user-select: none;*/
+    /*user-select: none*/
+}
+
+header {
+    background-color: #66ABD5;
+}
+
+/*Title*/
+header > h1 {
+    padding: 1%;
+    text-align: center;
+    color: darksalmon;
+    text-shadow: 1px 1px 2px black;
+}
+
+/* Style inputs, select elements and textareas */
+input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+
+/* Style the label to display next to the inputs */
+label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+}
+
+/* Style the submit button */
+input[type=send] {
+    background-color: #56ccff;
+    color: white;
+    padding: 12px 20px;
+    border: solid white;
+    border-radius: 7px;
+    cursor: pointer;
+    float: right;
+}
+
+input[type=send]:hover {
+    background-color: #2cba0f;
+    color: white;
+    padding: 12px 20px;
+    border: solid #2fa717;
+    border-radius: 7px;
+    cursor: pointer;
+    float: right;
+}
+
+/* Style the container */
+.container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+/* Floating column for labels: 25% width */
+.column-25 {
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+}
+
+/* Floating column for inputs: 75% width */
+.column-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+    .column-25, .column-75, input[type=send] {
+        width: 100%;
+        margin-top: 0;
+    }
 }
