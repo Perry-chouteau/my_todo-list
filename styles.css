@@ -69,11 +69,6 @@ input[type=send]:hover {
     padding: 20px;
 }
 
-.items {
-    background-color: #56ccff;
-    padding: 20px;
-}
-
 /* Floating column for labels: 25% width */
 .column-25 {
     float: left;
