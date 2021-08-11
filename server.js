@@ -16,24 +16,35 @@ app.use(express.static('public'));
 app.route('/api')
 .post(function (req, res) {
     fs.readFile(path.join(config, "last-id"), "utf-8", (error, data) => {
-        if (error) {
-            data = "0";
-        }
+        if (error) { data = "0"; return };
         fs.writeFile(path.join(content, data), JSON.stringify(req.body), () => {
             fs.mkdir(config, () => {
                 fs.writeFile(path.join(config, "last-id"), +data + 1, () => {
-                    res.status(200).send("ok");
+                    res.status(200).send("post|ok");
                 });
             });
         });
     });
 })
+app.route('/api')
 .get(function (_, res) {
-    fs.readdir(content, (error, data) => {
-        if (error) data = "";
-        res.status(200).send(data);
+    let result = [];
+    let len_data = -1;
+    fs.readdir(content, (error, fileList) => {
+        if (error) { return };
+        console.log(fileList);
+        for (element of fileList) {
+            fs.readFile(path.join(content, element), "utf-8", (_, data) => {
+                console.log(data);
+                ++len_data;
+                result[len_data] = data;
+                console.log(len_data);
+            });
+        };
     });
+    result[0] = "void";
+    console.log(result);
+    res.status(200).send(result);
 });
-
 
 app.listen(port);
