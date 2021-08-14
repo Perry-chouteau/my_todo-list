@@ -26,25 +26,24 @@ app.route('/api')
         });
     });
 })
-app.route('/api')
 .get(function (_, res) {
     let result = [];
-    let len_data = -1;
+    let data = 0;
+    let len_data = 0;
     fs.readdir(content, (error, fileList) => {
-        if (error) { return };
+        if (error) { return; }
         console.log(fileList);
         for (element of fileList) {
-            fs.readFile(path.join(content, element), "utf-8", (_, data) => {
-                console.log(data);
-                ++len_data;
-                result[len_data] = data;
-                console.log(len_data);
-            });
-        };
+            data = fs.readFileSync(path.join(content, element), "utf-8");
+            result[len_data] = JSON.parse(data);
+            ++len_data;
+            console.log(len_data);
+            //if (data_len == fileList.length)
+            //    res.status(200).send(result);
+        }
+        console.log(result);
+        res.status(200).send(result);
     });
-    result[0] = "void";
-    console.log(result);
-    res.status(200).send(result);
 });
 
 app.listen(port);

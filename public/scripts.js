@@ -1,17 +1,22 @@
 /*form handler*/
-$.ajax({
-    url: '/api',
-    method: 'GET',
-    contentType: "application/json; charset=utf-8",
-    success: (res) => {
-        document.getElementById("result").innerHTML = res;
-    },
-    error: (err) => {
-        console.error(err);
-    }
-});
+
+function method_get() { //plus propre avec une fonction qu'un bloc
+    return $.ajax({
+        url: '/api',
+        method: 'GET',
+        contentType: "application/json; charset=utf-8",
+        error: (err) => {
+            console.error(err);
+        }
+    });
+}
 
 $(document).ready(() => {
+    method_get().then(data => {
+        for (i in data) {
+            document.getElementById("result").innerHTML += `<div class>${data[i].name} ${data[i].note}</div>`;
+        }
+    });
 
     $("div > input[type=submit]#submit").on("click tap", () => {
 
@@ -27,19 +32,18 @@ $(document).ready(() => {
                 note: note,
             }),
             success: (res) => {
-                console.log(res);
-            },
-            error: (err) => {
-                console.error(err);
-            }
-        });
-
-        $.ajax({
-            url: '/api',
-            method: 'GET',
-            contentType: "application/json; charset=utf-8",
-            success: (res) => {
-                document.getElementById("result").innerHTML = res;
+                method_get().then(data => {
+                    document.getElementById("result").innerHTML = "";
+                    data.sort(function(a, b){
+                        if(a.name.toLowerCase() < b.name.toLowerCase()) { return -1; }
+                        if(a.name.toLowerCase() > b.name.toLowerCase()) { return 1; }
+                        return 0;
+                    });
+                    console.log(data);
+                    for (i in data) {
+                        document.getElementById("result").innerHTML += `<div class>${data[i].name} ${data[i].note}</div>`;
+                    }
+                }); 
             },
             error: (err) => {
                 console.error(err);
