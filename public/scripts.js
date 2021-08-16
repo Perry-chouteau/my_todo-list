@@ -14,7 +14,7 @@ function method_get() { //plus propre avec une fonction qu'un bloc
 $(document).ready(() => {
     method_get().then(data => {
         for (i in data) {
-            document.getElementById("result").innerHTML += `<div class>${data[i].name} ${data[i].note}</div>`;
+            document.getElementById("result").innerHTML += `<div class="content"> <div class="content-50">Title: ${data[i].name}</div> <div class="content-50">Note: ${data[i].note}</div></div>`;
         }
     });
 
@@ -41,7 +41,7 @@ $(document).ready(() => {
                     });
                     console.log(data);
                     for (i in data) {
-                        document.getElementById("result").innerHTML += `<div class>${data[i].name} ${data[i].note}</div>`;
+                        document.getElementById("result").innerHTML += `<div class="content"> <div class="content-50">Title: ${data[i].name}</div> <div class="content-50">Note: ${data[i].note}</div></div>`;
                     }
                 }); 
             },

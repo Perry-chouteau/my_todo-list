@@ -90,6 +90,33 @@ input[type=submit]:hover {
     clear: both;
 }
 
+.content {
+    background-color:#87d6f8;
+    color: black;
+    padding: 2  px 2px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border: solid #6c9dbb;
+    border-radius: 3px;
+    float: left;
+    width: 99%;
+}
+
+.content-50 {
+    background-color:#b8eaff;
+    border: solid #6c9dbb;
+    float: left;
+    width: 49%;
+
+    padding: 25px 25px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
     .column-25, .column-75, input[type=submit] {
